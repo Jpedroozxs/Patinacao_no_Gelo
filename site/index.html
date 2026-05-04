@@ -1,31 +1,369 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patinação</title>
-</head>
+    <title>⛸️ Patinação no Gelo – Arte, Esporte e Elegância</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 30%, #7dd3fc 70%, #e0f2fe 100%);
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-attachment: fixed;
+            position: relative;
+            color: #0c4a6e;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(219, 234, 254, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 30px 60px rgba(0, 105, 148, 0.2),
+                0 10px 30px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        header {
+            width: 100%;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 20px;
+            padding: 20px 30px;
+            box-shadow: 0 8px 25px rgba(0, 105, 148, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+            border-radius: 0 0 20px 20px;
+        }
+
+        header nav {
+            width: 100%;
+            height: auto;
+            min-height: 40px;
+            background: transparent;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0369a1, #1e3a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #0369a1;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #1e3a8a;
+            border-bottom-color: #38bdf8;
+        }
+
+        section {
+            flex: 1 1 65%;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        article {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            min-height: 160px;
+            box-shadow: 0 10px 25px rgba(0, 105, 148, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        article:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 105, 148, 0.2);
+        }
+
+        article::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #06b6d4, #3b82f6);
+            border-radius: 20px 0 0 20px;
+        }
+
+        article h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #0c4a6e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        article p {
+            line-height: 1.6;
+            color: #155e75;
+            font-size: 1rem;
+        }
+
+        .emoji-icon {
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
+        aside {
+            flex: 1 1 30%;
+            min-width: 200px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.8) 0%, rgba(224, 242, 254, 0.8) 100%);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px;
+            min-height: 340px;
+            box-shadow: 0 10px 30px rgba(0, 105, 148, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        aside::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        aside h3 {
+            font-size: 1.3rem;
+            color: #0c4a6e;
+            border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+            padding-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .curiosidades-lista {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .curiosidades-lista li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #155e75;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            border-radius: 12px;
+            transition: background 0.3s;
+        }
+
+        .curiosidades-lista li:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .curiosidades-lista span {
+            font-size: 1.2rem;
+        }
+
+        footer {
+            width: 100%;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            border-radius: 20px;
+            padding: 20px 30px;
+            box-shadow: 0 8px 25px rgba(0, 105, 148, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+            border-radius: 20px 20px 0 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #0369a1, #1e3a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            section {
+                flex: 1 1 100%;
+            }
+            aside {
+                flex: 1 1 100%;
+                min-height: auto;
+            }
+            article {
+                min-height: auto;
+            }
+            .nav-links {
+                gap: 15px;
+            }
+        }
+
+        .container::before {
+            content: '❄️  ❄️  ❄️';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            letter-spacing: 15px;
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 0;
+            color: #0369a1;
+        }
+    </style>
+</head>
 <body>
     <div class="container">
         <header>
             <nav>
-
+                <div class="logo">⛸️ Ice Glide</div>
+                <ul class="nav-links">
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">História</a></li>
+                    <li><a href="#">Atletas</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
             </nav>
         </header>
+
         <section>
-            <article></article>
-            <article></article>
+            <article>
+                <h2><span class="emoji-icon">⛸️</span> A História da Patinação no Gelo</h2>
+                <p>A patinação no gelo surgiu há mais de 4 mil anos, na Escandinávia, como meio de transporte sobre lagos congelados. Os primeiros patins eram feitos de ossos de animais. No século XIX, o esporte ganhou popularidade na Europa e, em 1908, tornou-se o primeiro esporte de inverno a integrar os Jogos Olímpicos. Hoje, encanta milhões com sua mistura de atletismo e arte.</p>
+            </article>
+            <article>
+                <h2><span class="emoji-icon">✨</span> Modalidades e Técnicas</h2>
+                <p>Existem várias modalidades: a patinação artística, com saltos como Axel e Lutz, giros e coreografias emocionantes; a patinação de velocidade, que exige resistência e técnica apurada em pistas ovais; e o hóquei no gelo, esporte coletivo de muita intensidade. Cada modalidade tem suas regras e equipamentos específicos, mas todas compartilham a magia de deslizar sobre o gelo.</p>
+            </article>
         </section>
+
         <aside>
-
+            <h3>❄️ Curiosidades</h3>
+            <ul class="curiosidades-lista">
+                <li><span>🏅</span> O primeiro campeonato mundial foi em 1896.</li>
+                <li><span>🎬</span> Filmes como "Blades of Glory" popularizaram o esporte.</li>
+                <li><span>🧊</span> A pista olímpica deve ter 60m x 30m.</li>
+                <li><span>⭐</span> O salto mais difícil é o Axel quádruplo.</li>
+                <li><span>🌍</span> Países como Rússia, Canadá e EUA dominam o pódio.</li>
+            </ul>
         </aside>
-        <footer>
 
+        <footer>
+            <p>✦ Patinação no Gelo – Deslize para o extraordinário ✦</p>
         </footer>
     </div>
-
 </body>
-
 </html>
